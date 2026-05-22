@@ -1,0 +1,15 @@
+import React from 'react';
+
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <footer className="footer-section">
+      <div className="container footer-container">
+        <p className="copyright-text">
+          &copy; {currentYear} <span className="brand-highlight">CRYSTALLINE BUILDERS</span>. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  );
+}
