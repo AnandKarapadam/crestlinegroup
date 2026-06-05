@@ -1,0 +1,113 @@
+/* ==========================================================================
+   SERVICES SECTION
+   ========================================================================== */
+.services-section {
+  background: var(--bg-main);
+  position: relative;
+}
+
+.services-header {
+  text-align: center;
+  margin-bottom: 5rem;
+}
+
+.services-subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.service-card {
+  padding: 3rem 2.25rem;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  border: 1px solid var(--border-subtle);
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover {
+  border-color: var(--accent-glow);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.service-icon-wrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 8px;
+  background: rgba(197, 168, 128, 0.08);
+  border: 1px solid rgba(197, 168, 128, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover .service-icon-wrapper {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.service-icon {
+  color: var(--accent);
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover .service-icon {
+  color: #0d0d0f;
+}
+
+.service-title {
+  font-family: var(--font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.service-description {
+  color: var(--text-secondary);
+  font-size: 0.925rem;
+  line-height: 1.65;
+}
+
+.service-card-glow {
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, rgba(197, 168, 128, 0.06) 0%, transparent 70%);
+  filter: blur(20px);
+  pointer-events: none;
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.service-card:hover .service-card-glow {
+  opacity: 1;
+  bottom: -20px;
+  right: -20px;
+}
+
+.service-card.reveal-on-scroll.is-visible:hover {
+  transform: translate3d(0, -8px, 0);
+}
+
+@media (max-width: 992px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .service-card {
+    padding: 2.5rem 2rem;
+  }
+}

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import '../styles/navbar.css';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,7 +10,11 @@ export default function Navbar() {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener('scroll', handleScroll);
+
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -23,15 +27,18 @@ export default function Navbar() {
 
   return (
     <>
-      <motion.nav 
-        className={`header-nav ${isScrolled ? 'scrolled' : ''}`}
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <nav className={`header-nav navbar-load ${isScrolled ? 'scrolled' : ''}`}>
         <div className="container nav-wrapper">
           <a href="#" className="brand">
-            <img src="/images/cropedlogo1.png" alt="Crystalline Logo" className="nav-logo" />
+            <img
+              src="/images/cropedlogo1.png"
+              alt="Crystalline Logo"
+              className="nav-logo"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
+
             <span className="brand-text">CRYSTALLINE BUILDERS</span>
           </a>
 
@@ -44,6 +51,7 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
+
             <li>
               <a href="#contact" className="btn-nav-cta">
                 Get In Touch
@@ -52,51 +60,46 @@ export default function Navbar() {
           </ul>
 
           {/* Mobile Toggle */}
-          <button 
+          <button
+            type="button"
             className="mobile-toggle-btn"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setIsOpen((prev) => !prev)}
             aria-label="Toggle navigation menu"
+            aria-expanded={isOpen}
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
-      </motion.nav>
+      </nav>
 
       {/* Mobile Drawer */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div 
-            className="mobile-drawer"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            <ul className="mobile-nav-links">
-              {navItems.map((item) => (
-                <li key={item.label}>
-                  <a 
-                    href={item.href} 
-                    className="mobile-nav-link-item"
-                    onClick={() => setIsOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-              <li>
-                <a 
-                  href="#contact" 
-                  className="btn-mobile-nav-cta"
+      {isOpen && (
+        <div className="mobile-drawer mobile-drawer-open">
+          <ul className="mobile-nav-links">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  className="mobile-nav-link-item"
                   onClick={() => setIsOpen(false)}
                 >
-                  Get In Touch
+                  {item.label}
                 </a>
               </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            ))}
+
+            <li>
+              <a
+                href="#contact"
+                className="btn-mobile-nav-cta"
+                onClick={() => setIsOpen(false)}
+              >
+                Get In Touch
+              </a>
+            </li>
+          </ul>
+        </div>
+      )}
     </>
   );
 }

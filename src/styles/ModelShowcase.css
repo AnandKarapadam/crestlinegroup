@@ -1,0 +1,38 @@
+/* ==========================================================================
+   3D MODEL SHOWCASE
+   ========================================================================== */
+.model-showcase-section {
+  position: relative;
+  width: 100%;
+  height: clamp(320px, 42vw, 520px);
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--bg-main) 0%,
+    rgba(18, 18, 24, 0.85) 50%,
+    var(--bg-main) 100%
+  );
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+  contain: layout paint;
+}
+
+.model-showcase-canvas {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.model-showcase-canvas:active {
+  cursor: grabbing;
+}
+
+.model-showcase-canvas canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  touch-action: pan-y;
+}

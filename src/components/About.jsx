@@ -1,120 +1,137 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import '../styles/about.css';
 
 const carouselImages = [
-  '/images/siteone.png',
-  '/images/sitepool.png',
-  '/images/sitefour.png'
+  {
+    src: '/images/siteone.png',
+    alt: 'Crystalline Construction Site 1',
+  },
+  {
+    src: '/images/sitepool.png',
+    alt: 'Crystalline Construction Site 2',
+  },
+  {
+    src: '/images/sitefour.png',
+    alt: 'Crystalline Construction Site 3',
+  },
 ];
 
 export default function About() {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
-    }, 4000);
-    return () => clearInterval(timer);
+    carouselImages.forEach((image) => {
+      const img = new Image();
+      img.src = image.src;
+    });
   }, []);
 
-  const textVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-    }
-  };
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % carouselImages.length);
+    }, 4000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    const revealElements = document.querySelectorAll('.js-scroll-reveal');
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      },
+      {
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px',
+      }
+    );
+
+    revealElements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section id="about" className="about-section section-padding">
       <div className="container">
         <div className="about-grid">
-          
           {/* Left Side: Story & Stats */}
-          <motion.div 
-            className="about-content"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-100px" }}
-            variants={{
-              visible: { transition: { staggerChildren: 0.15 } }
-            }}
-          >
-            <motion.span className="section-label" variants={textVariants}>
+          <div className="about-content js-scroll-reveal reveal-up">
+            <span className="section-label">
               About Us
-            </motion.span>
-            
-            <motion.h2 className="section-title-h2 gold-gradient-text" variants={textVariants}>
-              Building Precision. Shaping Skylines.
-            </motion.h2>
-            
-            <motion.p className="about-lead lead-text" variants={textVariants}>
-              CRYSTALLINE BUILDERS blends engineering excellence with modern architectural design. 
-              With over <span className="highlight-text">10 years</span> of experience, we construct durable, 
-              beautiful, and functional spaces.
-            </motion.p>
-            
-            <motion.p className="about-description" variants={textVariants}>
-              Every project we touch is executed with uncompromising quality—whether it's a high-rise landmark, 
-              commercial hub, or premium residential space. Our philosophy is simple: precision in every layer, 
-              transparency in every decision, and premium craftsmanship in every inch.
-            </motion.p>
+            </span>
 
-            {/* Premium Stats Grid */}
-            <motion.div className="stats-grid" variants={textVariants}>
+            <h2 className="section-title-h2 gold-gradient-text">
+              Building Precision. Shaping Skylines.
+            </h2>
+
+            <p className="about-lead lead-text">
+              CRYSTALLINE BUILDERS blends engineering excellence with modern architectural design.
+              With over <span className="highlight-text">10 years</span> of experience, we construct durable,
+              beautiful, and functional spaces.
+            </p>
+
+            <p className="about-description">
+              Every project we touch is executed with uncompromising quality-whether it's a high-rise landmark,
+              commercial hub, or premium residential space. Our philosophy is simple: precision in every layer,
+              transparency in every decision, and premium craftsmanship in every inch.
+            </p>
+
+            <div className="stats-grid">
               <div className="stat-card">
                 <span className="stat-number">10+</span>
                 <span className="stat-label">Years of Mastery</span>
               </div>
+
               <div className="stat-card">
                 <span className="stat-number">50+</span>
                 <span className="stat-label">Projects Completed</span>
               </div>
+
               <div className="stat-card">
                 <span className="stat-number">100%</span>
                 <span className="stat-label">Client Approval</span>
               </div>
-            </motion.div>
+            </div>
 
-            <motion.div className="about-cta" variants={textVariants}>
+            <div className="about-cta">
               <a href="#contact" className="btn-outline">
                 Partner With Us
               </a>
-            </motion.div>
-          </motion.div>
+            </div>
+          </div>
 
-          {/* Right Side: Animated Image Slider */}
-          <motion.div 
-            className="about-slider-wrapper"
-            initial={{ opacity: 0, x: 40 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
+          {/* Right Side: Lightweight Image Slider */}
+          <div className="about-slider-wrapper js-scroll-reveal reveal-right">
             <div className="carousel-container">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={currentIndex}
-                  className="carousel-slide"
-                  initial={{ opacity: 0, scale: 1.05 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
-                  transition={{ duration: 0.7 }}
+              {carouselImages.map((image, index) => (
+                <div
+                  key={image.src}
+                  className={`carousel-slide ${index === currentIndex ? 'active' : ''}`}
+                  aria-hidden={index !== currentIndex}
                 >
-                  <img 
-                    src={carouselImages[currentIndex]} 
-                    alt={`Crystalline Construction Site ${currentIndex + 1}`} 
+                  <img
+                    src={image.src}
+                    alt={image.alt}
                     className="carousel-img"
+                    loading={index === 0 ? 'eager' : 'lazy'}
+                    fetchPriority={index === 0 ? 'high' : 'auto'}
+                    decoding="async"
                   />
-                </motion.div>
-              </AnimatePresence>
-              
-              {/* Carousel Indicators */}
+                </div>
+              ))}
+
               <div className="carousel-indicators">
                 {carouselImages.map((_, index) => (
                   <button
                     key={index}
+                    type="button"
                     className={`carousel-indicator-dot ${index === currentIndex ? 'active' : ''}`}
                     onClick={() => setCurrentIndex(index)}
                     aria-label={`Go to slide ${index + 1}`}
@@ -122,9 +139,9 @@ export default function About() {
                 ))}
               </div>
             </div>
-            <div className="slider-backdrop-accent"></div>
-          </motion.div>
 
+            <div className="slider-backdrop-accent"></div>
+          </div>
         </div>
       </div>
     </section>
