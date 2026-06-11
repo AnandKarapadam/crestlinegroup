@@ -42,7 +42,7 @@ export default function Leadership({ showToast }) {
           <span className="section-label">Leadership</span>
 
           <h2 className="section-title-h2 gold-gradient-text">
-            Faces behind CRESTLINE BUILDERS
+            Faces behind CRESTLINE CONSTRUCTION
           </h2>
 
           <p className="lead-text leadership-subtitle">

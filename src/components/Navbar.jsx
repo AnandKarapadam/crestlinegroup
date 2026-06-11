@@ -31,7 +31,7 @@ export default function Navbar() {
         <div className="container nav-wrapper">
           <a href="#" className="brand">
             <img
-              src="/images/cropedlogo1.png"
+              src="/images/logo_croped_black.png"
               alt="Crystalline Logo"
               className="nav-logo"
               loading="eager"
@@ -39,7 +39,7 @@ export default function Navbar() {
               decoding="async"
             />
 
-            <span className="brand-text">CRESTLINE BUILDERS</span>
+            <span className="brand-text">CRESTLINE CONSTRUCTION</span>
           </a>
 
           {/* Desktop Nav */}

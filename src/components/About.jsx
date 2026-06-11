@@ -72,7 +72,7 @@ export default function About() {
             </h2>
 
             <p className="about-lead lead-text">
-              CRESTLINE BUILDERS blends engineering excellence with modern architectural design.
+              CRESTLINE CONSTRUCTION blends engineering excellence with modern architectural design.
               With over <span className="highlight-text">10 years</span> of experience, we construct durable,
               beautiful, and functional spaces.
             </p>

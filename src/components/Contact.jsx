@@ -211,7 +211,7 @@ export default function Contact() {
                 <div>
                   <h4>General Inquiries</h4>
                   <a href="mailto:info@crystallinebuilders.com">
-                    info@crestlinebuilders.com
+                    info@crestlineconstruction.com
                   </a>
                 </div>
               </div>
