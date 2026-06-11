@@ -7,7 +7,7 @@ const leaders = [
     name: 'Founder Name',
     role: 'Founder & CEO',
     bio: 'Lead visionary with two decades crafting skyline icons across Asia.',
-    email: 'founder@crystalline.com',
+    email: 'founder@crestline.com',
     phone: '+1 212 555 0175',
     image: '/images/blankprofile.png',
   },
@@ -15,7 +15,7 @@ const leaders = [
     name: 'Director Name',
     role: 'Project Director',
     bio: 'Drives mega-site execution with lean methodologies and safety-first culture.',
-    email: 'director@crystalline.com',
+    email: 'director@crestline.com',
     phone: '+1 415 555 0189',
     image: '/images/blankprofile.png',
   },
@@ -42,7 +42,7 @@ export default function Leadership({ showToast }) {
           <span className="section-label">Leadership</span>
 
           <h2 className="section-title-h2 gold-gradient-text">
-            Faces behind CRYSTALLINE BUILDERS
+            Faces behind CRESTLINE BUILDERS
           </h2>
 
           <p className="lead-text leadership-subtitle">

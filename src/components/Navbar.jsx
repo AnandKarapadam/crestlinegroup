@@ -39,7 +39,7 @@ export default function Navbar() {
               decoding="async"
             />
 
-            <span className="brand-text">CRYSTALLINE BUILDERS</span>
+            <span className="brand-text">CRESTLINE BUILDERS</span>
           </a>
 
           {/* Desktop Nav */}

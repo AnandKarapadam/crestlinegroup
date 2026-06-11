@@ -211,7 +211,7 @@ export default function Contact() {
                 <div>
                   <h4>General Inquiries</h4>
                   <a href="mailto:info@crystallinebuilders.com">
-                    info@crystallinebuilders.com
+                    info@crestlinebuilders.com
                   </a>
                 </div>
               </div>
@@ -226,7 +226,7 @@ export default function Contact() {
                   <div className="form-group">
                     <label htmlFor="name">Full Name</label>
                     <input
-                      type="text"
+                      type="text" 
                       id="name"
                       className={fieldClass('name')}
                       placeholder="Enter Name"
