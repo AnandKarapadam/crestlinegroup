@@ -169,7 +169,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="contact-section section-padding">
+    <section  className="contact-section section-padding">
       <div className="container">
         {/* Form status notification overlay */}
         {status.visible && (
@@ -199,7 +199,7 @@ export default function Contact() {
 
                 <div>
                   <h4>Location</h4>
-                  <p>Wayanad, Kerala, India</p>
+                  <p>Chundel, Wayanad, Pin: 673123</p>
                 </div>
               </div>
 
@@ -210,8 +210,8 @@ export default function Contact() {
 
                 <div>
                   <h4>General Inquiries</h4>
-                  <a href="mailto:info@crystallinebuilders.com">
-                    info@crestlineconstruction.com
+                  <a href="mailto:constructioncrestline@gmail.com">
+                    constructioncrestline@gmail.com
                   </a>
                 </div>
               </div>
@@ -220,7 +220,7 @@ export default function Contact() {
 
           {/* Right Column: Glassmorphic Form Card */}
           <RevealOnScroll className="contact-form-column" delay={220}>
-            <div className="contact-form-card glass-panel">
+            <div id="contact" className="contact-form-card glass-panel">
               <form onSubmit={handleSubmit} className="contact-form">
                 <div className="form-row-two">
                   <div className="form-group">

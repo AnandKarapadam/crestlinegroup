@@ -31,7 +31,7 @@ export default function Navbar() {
         <div className="container nav-wrapper">
           <a href="#" className="brand">
             <img
-              src="/images/logo_croped_black.png"
+              src="/images/crestline_logo_transparent.png"
               alt="Crystalline Logo"
               className="nav-logo"
               loading="eager"

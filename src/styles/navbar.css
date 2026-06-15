@@ -163,6 +163,7 @@
   text-align: center;
   width: 100%;
 }
+
 .navbar-load {
   animation: navbarLoad 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
@@ -194,6 +195,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+
   .navbar-load,
   .mobile-drawer-open {
     animation: none;
@@ -229,13 +231,48 @@
     height: 34px;
   }
 }
+
 @media (max-width: 420px) {
   .brand-text {
     font-size: 1.2rem;
     letter-spacing: 0.015em;
   }
 
+  .brand {
+    gap: 0.19rem;
+  }
+
   .nav-wrapper {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .nav-logo {
+    height: 30px;
+  }
+}
+@media (max-width: 345px) {
+  .brand-text {
+    font-size: 1.1rem;
+    letter-spacing: 0.015em;
+  }
+  
+    .nav-wrapper {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .nav-logo {
+    height: 30px;
+  }
+}
+@media (max-width: 325px) {
+  .brand-text {
+    font-size: 1rem;
+    letter-spacing: 0.015em;
+  }
+
+    .nav-wrapper {
     padding-left: 0.5rem;
     padding-right: 0.5rem;
   }
