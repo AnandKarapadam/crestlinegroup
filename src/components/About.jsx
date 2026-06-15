@@ -58,11 +58,11 @@ export default function About() {
   }, []);
 
   return (
-    <section id="about" className="about-section section-padding">
+    <section  className="about-section section-padding">
       <div className="container">
         <div className="about-grid">
           {/* Left Side: Story & Stats */}
-          <div className="about-content js-scroll-reveal reveal-up">
+          <div id="about" className="about-content js-scroll-reveal reveal-up">
             <span className="section-label">
               About Us
             </span>

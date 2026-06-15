@@ -8,7 +8,8 @@
 
 .leadership-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(380px, 420px));
+  justify-content: center;
   gap: 3rem;
   max-width: 900px;
   margin: 0 auto;
@@ -21,6 +22,8 @@
   height: 100%;
   border: 1px solid var(--border-subtle);
   transition: var(--transition-smooth);
+   width: 100%;
+  max-width: 420px;
 }
 
 .leader-card:hover {
@@ -70,6 +73,13 @@
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  align-items: center;
+  text-align: center;
+}
+.leadership-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem;
 }
 
 .leader-name {

@@ -10,7 +10,7 @@ export default function Hero() {
           {/* Left Column: Image */}
           <div className="hero-image-wrapper">
             <img
-              src="/images/crestlinelogo1.png"
+              src="/images/crestline_hero_img.png"
               alt="Crystalline Builders Landmark"
               className="hero-img-element"
               loading="eager"

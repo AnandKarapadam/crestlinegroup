@@ -1,29 +1,30 @@
-import { Mail, Phone, Copy } from 'lucide-react';
-import RevealOnScroll from '../hooks/useRevealOnScroll';
-import '../styles/leadership.css';
+import { Mail, Phone, Copy } from "lucide-react";
+import RevealOnScroll from "../hooks/useRevealOnScroll";
+import "../styles/leadership.css";
 
 const leaders = [
   {
-    name: 'Founder Name',
-    role: 'Founder & CEO',
-    bio: 'Lead visionary with two decades crafting skyline icons across Asia.',
-    email: 'founder@crestline.com',
-    phone: '+1 212 555 0175',
-    image: '/images/blankprofile.png',
+    name: "Founder Name",
+    role: "Founder & CEO",
+    bio: "Lead visionary with two decades crafting skyline icons across Asia.",
+    email: "constructioncrestline@gmail.com",
+    phone: "+91 9086336666",
+    alternatePhone: "+91 9946463716",
+    image: "/images/blankprofile.png",
   },
-  {
-    name: 'Director Name',
-    role: 'Project Director',
-    bio: 'Drives mega-site execution with lean methodologies and safety-first culture.',
-    email: 'director@crestline.com',
-    phone: '+1 415 555 0189',
-    image: '/images/blankprofile.png',
-  },
+  // {
+  //   name: 'Director Name',
+  //   role: 'Project Director',
+  //   bio: 'Drives mega-site execution with lean methodologies and safety-first culture.',
+  //   email: 'director@crestline.com',
+  //   phone: '+1 415 555 0189',
+  //   image: '/images/blankprofile.png',
+  // },
 ];
 
 export default function Leadership({ showToast }) {
   const handlePhoneClick = (e, phone) => {
-    const isDesktop = window.matchMedia('(min-width: 992px)').matches;
+    const isDesktop = window.matchMedia("(min-width: 992px)").matches;
 
     if (isDesktop) {
       e.preventDefault();
@@ -35,8 +36,8 @@ export default function Leadership({ showToast }) {
   };
 
   return (
-    <section id="leadership" className="leadership-section section-padding">
-      <div className="container">
+    <section  className="leadership-section section-padding">
+      <div id="leadership" className="container">
         {/* Section Header */}
         <RevealOnScroll className="leadership-header text-center">
           <span className="section-label">Leadership</span>
@@ -46,11 +47,11 @@ export default function Leadership({ showToast }) {
           </h2>
 
           <p className="lead-text leadership-subtitle">
-            Our visionary directors combining years of structural design and construction experience.
+            Our visionary directors combining years of structural design and
+            construction experience.
           </p>
         </RevealOnScroll>
 
-        {/* 2 Contact Cards Grid */}
         <div className="leadership-grid">
           {leaders.map((leader, index) => (
             <RevealOnScroll
@@ -78,13 +79,16 @@ export default function Leadership({ showToast }) {
                 <p className="leader-bio">{leader.bio}</p>
 
                 <div className="leader-contacts">
-                  <a href={`mailto:${leader.email}`} className="leader-contact-link">
+                  <a
+                    href={`mailto:${leader.email}`}
+                    className="leader-contact-link"
+                  >
                     <Mail size={16} />
                     <span>{leader.email}</span>
                   </a>
 
                   <a
-                    href={`tel:${leader.phone.replace(/\s+/g, '')}`}
+                    href={`tel:${leader.phone.replace(/\s+/g, "")}`}
                     onClick={(e) => handlePhoneClick(e, leader.phone)}
                     className="leader-contact-link phone-link"
                     title="Click to copy on desktop, click to call on mobile"
@@ -93,6 +97,20 @@ export default function Leadership({ showToast }) {
                     <span>{leader.phone}</span>
                     <Copy size={12} className="copy-icon" />
                   </a>
+                  {leader.alternatePhone && (
+                    <a
+                      href={`tel:${leader.alternatePhone.replace(/\s+/g, "")}`}
+                      onClick={(e) =>
+                        handlePhoneClick(e, leader.alternatePhone)
+                      }
+                      className="leader-contact-link phone-link"
+                      title="Click to copy on desktop, click to call on mobile"
+                    >
+                      <Phone size={16} />
+                      <span>{leader.alternatePhone}</span>
+                      <Copy size={12} className="copy-icon" />
+                    </a>
+                  )}
                 </div>
               </div>
             </RevealOnScroll>

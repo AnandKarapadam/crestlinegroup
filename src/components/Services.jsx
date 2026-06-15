@@ -25,8 +25,8 @@ const servicesData = [
 
 export default function Services() {
   return (
-    <section id="services" className="services-section section-padding">
-      <div className="container">
+    <section  className="services-section section-padding">
+      <div id="services" className="container">
         {/* Title Area */}
         <RevealOnScroll className="services-header">
           <span className="section-label">Services</span>
