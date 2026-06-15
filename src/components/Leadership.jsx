@@ -4,7 +4,7 @@ import "../styles/leadership.css";
 
 const leaders = [
   {
-    name: "Aghilesh PA",
+    name: "AGHILESH PA",
     role: "Founder & CEO",
     bio: "Lead visionary with two decades crafting skyline icons across Asia.",
     email: "constructioncrestline@gmail.com",
